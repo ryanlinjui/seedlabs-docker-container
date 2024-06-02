@@ -7,9 +7,10 @@ Modyfied by [SeedLab Setup](https://github.com/seed-labs/seed-labs/blob/master/m
 - [x] Vncserver (TigerVNC)
 - [x] Desktop Environment (xfce4)
 - [x] Docker
-- [ ] Wireshark
-- [x] Firefox
+- [x] Wireshark
+- [ ] Firefox
 - [ ] VSCode
+- [ ] bless
 
 ## Setup SeedLab Environment with Docker Container
 
