@@ -53,13 +53,16 @@ RUN apt-get update && apt-get -y install sudo vim git curl tcpdump iputils-ping 
     conntrack resolvconf firefox \
     ent execstack gdb ghex libpcap-dev nasm unzip whois zip zsh \
     gcc \
-    docker.io docker-compose wireshark \
+    docker.io wireshark \
     xfce4 xfce4-goodies x11vnc tightvncserver dbus-x11 xterm \
     python3-pip \
     && echo "/usr/sbin/lightdm" > /etc/X11/default-display-manager \
     && git clone https://github.com/longld/peda.git /opt/gdbpeda \
     && apt-get -y install python3-scapy python3-pycryptodome \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-aarch64" -o /usr/bin/docker-compose \
+    && chmod +x /usr/bin/docker-compose \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # ====================================================================================
 #  Configure for SEED labs, following the instructions from the lab:
@@ -105,7 +108,5 @@ RUN mkdir -p /root/.vnc \
         'xrdb /root/.Xresources\n' \
         'startxfce4 &' > /root/.vnc/xstartup \
     && chmod +x /root/.vnc/xstartup
-
-EXPOSE 5901
 
 CMD ["sh", "-c", "vncserver :1 -geometry 1280x800 -depth 24 && tail -f /dev/null"]
